@@ -77,8 +77,11 @@ class Post(models.Model):
     views = models.PositiveIntegerField(default=0)
 
     def increase_views(self):
+        print(self.views)
         self.views += 1
+        print(self.views)
         self.save(update_fields=['views'])
+        print(self.views)
 
     def __str__(self):
         return self.title
