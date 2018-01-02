@@ -22,6 +22,7 @@ class IndexView(ListView):
     context_object_name = 'post_list'
 
 
+
 # def detail(request, pk):
 #     post = get_object_or_404(Post, pk=pk)
 #     post.body = markdown.markdown(post.body,
