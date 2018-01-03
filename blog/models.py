@@ -77,11 +77,8 @@ class Post(models.Model):
     views = models.PositiveIntegerField(default=0)
 
     def increase_views(self):
-        print(self.views)
         self.views += 1
-        print(self.views)
         self.save(update_fields=['views'])
-        print(self.views)
 
     def __str__(self):
         return self.title
@@ -111,4 +108,4 @@ class Post(models.Model):
             self.excerpt = strip_tags(md.convert(self.body))[:54]
 
             # 调用父类的 save 方法将数据保存到数据库中
-            super(Post, self).save(*args, **kwargs)
+        super(Post, self).save(*args, **kwargs)

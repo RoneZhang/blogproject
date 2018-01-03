@@ -20,7 +20,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-    paginate_by = 1
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         """
@@ -55,6 +55,7 @@ class IndexView(ListView):
         # 注意此时 context 字典中已有了显示分页导航条所需的数据。
         return context
 
+    @staticmethod
     def pagination_data(paginator, page, is_paginated):
         if not is_paginated:
             # 如果没有分页，则无需显示分页导航条，不用任何分页导航条的数据，因此返回一个空的字典
