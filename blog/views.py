@@ -3,6 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Category, Tag
 from comments.forms import CommentForm
 from django.views.generic import ListView, DetailView
+from markdown.extensions.toc import TocExtension
+from django.utils.text import slugify
 
 
 # Create your views here.
@@ -190,12 +192,14 @@ class PostDetailView(DetailView):
     def get_object(self, queryset=None):
         # 需要对post的body进行渲染
         post = super(PostDetailView, self).get_object(queryset=None)
-        post.body = markdown.markdown(post.body,
-                                      extensions=[
-                                          'markdown.extensions.extra',
-                                          'markdown.extensions.codehilite',
-                                          'markdown.extensions.toc',
-                                      ])
+        md = markdown.Markdown(extensions=[
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+            # 'markdown.extensions.toc',
+            TocExtension(slugify=slugify)
+        ])
+        post.body = md.convert(post.body)
+        post.toc = md.toc
         return post
 
     def get_context_data(self, **kwargs):
