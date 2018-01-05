@@ -17,6 +17,7 @@ from django.db.models import Q
 #         'post_list': post_list
 #     })
 
+
 # 更改为类视图
 class IndexView(ListView):
     model = Post
@@ -237,7 +238,7 @@ class ArchivesView(IndexView):
 class CategoryView(IndexView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
-        return super(CategoryView, self).get_queryset().fiter(category=cate)
+        return super(CategoryView, self).get_queryset().filter(category=cate)
 
 
 class TagView(ListView):
