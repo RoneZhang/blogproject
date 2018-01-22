@@ -21,7 +21,7 @@ SECRET_KEY = '#^5o&w2bbzigffa*$v9r@0ib$+y*dd8$4+ojqxpdvbe!4y%u%0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '61.50.150.90']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ffer.top']
 
 # Application definition
 
